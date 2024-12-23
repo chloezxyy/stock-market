@@ -12,7 +12,7 @@ This project uses
 1. **Clone the Repository**:
     ```sh
     git clone https://github.com/chloezxyy/stock-market
-    cd jp-morgan
+    cd stock-market
     ```
 
 2. **Create a Virtual Environment** (optional but recommended):
