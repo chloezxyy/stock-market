@@ -43,7 +43,7 @@ This project uses
     ```
 3. **Run the `test_stock.py` File**:
     ```sh
-    python -m unittest stock.test.py
+    python -m unittest test_stock.py
     ```
 
 ### How to add your own values?
