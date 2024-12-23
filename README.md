@@ -11,7 +11,7 @@ This project uses
 ### Installation Steps
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/yourusername/jp-morgan.git
+    git clone https://github.com/chloezxyy/stock-market
     cd jp-morgan
     ```
 
