@@ -54,8 +54,4 @@ Please refer to ```test_gbce_all_share_index``` method in `test_stock.py` on how
 Here is an example of how the table will look like:
 ![alt text](image.png)
 
-### Contact
-For further assistance, please contact the project maintainer at [chloezhengxy@gmail.com]
-
-# stock-market
 # stock-market
