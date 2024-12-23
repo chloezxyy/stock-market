@@ -34,7 +34,7 @@ This project uses
 ### Running the Project
 1. **Navigate to the Project Directory**:
     ```sh
-    cd /path/to/jp-morgan
+    cd /path/to/stock-market
     ```
 
 2. **Run the `stock.py` File**:
