@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime, timedelta
-from stock import Stock, GBCE, Trade
+from stock_II import Stock, GBCE, Trade
 import time
 
 class TestStock(unittest.TestCase):
@@ -96,11 +96,31 @@ class TestStock(unittest.TestCase):
         new_vwsp = self.pop.calculate_volume_weighted_stock_price()
         new_duration = time.time() - start_time
 
-        print(f"Old VWSP: {old_vwsp}, Duration: {old_duration}")
-        print(f"New VWSP: {new_vwsp}, Duration: {new_duration}")
+        # print(f"Old VWSP: {old_vwsp}, Duration: {old_duration}")
+        # print(f"New VWSP: {new_vwsp}, Duration: {new_duration}")
 
         # Ensure both methods return the same result
         self.assertAlmostEqual(old_vwsp, new_vwsp, places=2)
+
+    # PART II
+    def test_get_latest_trade(self):
+        now = datetime.now()
+        trades = [
+            (self.pop, now - timedelta(minutes=4), 200, "buy", 110),
+            (self.pop, now - timedelta(minutes=5), 200, "sell", 210),
+            (self.pop, now - timedelta(minutes=6), 300, "buy", 115),
+            (self.pop, now, 100, "buy", 99),
+        ]
+
+        for stock, timestamp, quantity, buy_or_sell, price in trades:
+            stock.record_trade(timestamp, quantity, buy_or_sell, price)
+
+        latest_trade = self.pop.get_most_recent_trades()
+
+        self.assertIsNotNone(latest_trade)
+        self.assertEqual(latest_trade.timestamp, now)
+        self.assertEqual(latest_trade.price, 99)
+        self.assertEqual(latest_trade.quantity, 100)
 
 if __name__ == '__main__':
     unittest.main()

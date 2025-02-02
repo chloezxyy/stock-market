@@ -10,7 +10,7 @@
       1. Given any price as input, calculate the dividend yield  
       2. Given any price as input,  calculate the P/E Ratio  
       3. Record a trade, with timestamp, quantity, buy or sell indicator and price  
-      4. Calculate Volume Weighted Stock Price based on trades in past  5 minutes  
+      4. Calculate Volume Weighted Stock Price based on trades in past 5 minutes  
    2. Calculate the GBCE All Share Index using the geometric mean of the Volume Weighted Stock Price for all stocks
 
 # **Constraints & Notes**

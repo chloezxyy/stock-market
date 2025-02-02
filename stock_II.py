@@ -77,12 +77,49 @@ class Stock:
 
         return total_trade_value / total_quantity if total_quantity > 0 else 0 
     
+    ######################################## PART II ########################################
+    def get_most_recent_trades(self):
+        if not self.trades:
+            return None
+        return max(self.trades, key=lambda x: x.timestamp)
+    
+    """
+    Calculate the highest and lowest prices for a given stock within a specific timeframe
+    """
+    def calculate_highest_and_lowest_prices(self, start_time, end_time):
+        # filter the trades that are within the given timeframe
+        trades_within_timeframe = [trade for trade in self.trades if start_time <= trade.timestamp <= end_time]
+
+        # find the max and min prices 
+        if not trades_within_timeframe:
+            return None, None
+
+        highest_price = max(trades_within_timeframe, key=lambda x: x.timestamp).price
+        lowest_price = min(trades_within_timeframe, key=lambda x: x.timestamp).price
+        
 class GBCE:
     def __init__(self):
         self.stocks = []
 
     def add_stocks(self, stock: Stock) -> None:
         self.stocks.append(stock)
+
+    # PART II 
+    # Calculate the total market value of all stocks in the GBCE
+    """
+    market value = most_recent_trade_price * trade_quantity
+    1. Iterate through all the stocks in self.stocks
+    2. For each stock, get the most recent trade 
+    -> if trades are submitted in order, get the last trade
+    -> if trades are not submitted in order, sort the trades by timestamp and get the last trade
+    """
+    def calculate_total_market_value(self) -> float:
+        total_value = 0 
+        for stock in self.stocks:
+            if stock.trades:
+                latest_trade = stock.get_most_recent_trades()
+                total_value += latest_trade * stock.quantity
+        return total_value
 
     """
     Calculate VWSP for each stock: Use only trades from the last 5 minutes
